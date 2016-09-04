@@ -1,0 +1,26 @@
+[
+  {
+	"model": "platforms.socialplatform",
+	"pk": 1,
+	"fields": {
+	  "name": "renren",
+	  "verbose_name": "人人网"
+	}
+  },
+  {
+	"model": "platforms.socialplatform",
+	"pk": 2,
+	"fields": {
+	  "name":"weibo",
+	  "verbose_name":"新浪微博"
+	}
+  },
+  {
+	"model": "platforms.socialplatform",
+	"pk": 3,
+	"fields": {
+	  "name":"douban",
+	  "verbose_name":"豆瓣"
+	}
+  }
+]

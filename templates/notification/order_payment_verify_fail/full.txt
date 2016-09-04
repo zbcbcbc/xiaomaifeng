@@ -1,0 +1,18 @@
+{% load i18n %}
+	您刚才卖出一件物品，请确认寄货
+	点击确认寄货: {{send_goods_url}}
+	点击这里查看交易状态: {{order_detail_url}}
+
+	Title: {{title}}
+	Comment: {{comment}}
+	Body: {{body}}
+	Subject: {{subject}}
+	Price: {{price}}
+	Total_fee: {{total_fee}}
+	Receive_name: {{receive_name}}
+	Receive_address: {{receive_address}}
+	Receive_zip: {{receive_zip}}
+	Receive_mobile: {{receive_mobile}}
+
+
+	谢谢您的使用

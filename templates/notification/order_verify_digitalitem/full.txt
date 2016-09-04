@@ -1,0 +1,22 @@
+{% load i18n %}
+	您刚才下了一笔虚拟物品交易订单
+
+	物品详细：
+	物品名称: {{merchandise.name}}
+	物品介绍: {{merchandise.description}}
+	物品价格: {{merchandise.price}}
+
+	点击这里查看活动详细: {{merchandise.show_url}} (在小麥蜂官网确认物品以防止恶意邮件)
+
+	订单详细：
+	订单标题: {{order.title}}
+	您的留言: {{order.comment}}
+	购买价格: {{order.price}}
+	购买数量: {{order.quantity}}
+	总价格: {{order.total_fee}}
+
+	点击这里确认购买并且支付: {{payment.verify_url}} (若在2小时内不确认，则默认取消订单)
+	点击这里取消购买订单:{{order.cancel_url}} (注意：已经确认的订单无法被取消)
+
+
+	谢谢您的使用

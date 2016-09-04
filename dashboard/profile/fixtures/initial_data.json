@@ -1,0 +1,76 @@
+[
+  {
+    "model": "sites.Site",
+    "pk": 1,
+    "fields": {
+      "domain": "www.xiaomaifeng.com",
+      "name": "小麥蜂"
+    }
+  }, 
+  {
+    "model": "auth.user",
+    "pk": 1000,
+    "fields": {
+      "first_name": "Bicheng",
+      "last_name": "Zhang",
+      "username": "lalalalavic",
+      "password": "pbkdf2_sha256$10000$GSeQ4Q9OFuuY$cCge37kXfMBF+hhUp+uGTmo7bqAJknF1qGx6+PkTaqE=",
+      "email": "zhang368@illinois.edu",
+      "is_staff": 0, 
+      "is_active": 1
+    }
+  },
+   {
+    "model": "profile.userprofile",
+    "pk": 1000,
+    "fields": {
+      "address_1":"小黄村",
+      "address_2":"1号",
+      "province":"shanghai",
+      "zip_code":"200071",
+      "mobile":13601894077
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 1001,
+    "fields": {
+      "first_name": "Hao",
+      "last_name": "Sha",
+      "username": "olalalahao",
+      "password": "pbkdf2_sha256$10000$GSeQ4Q9OFuuY$cCge37kXfMBF+hhUp+uGTmo7bqAJknF1qGx6+PkTaqE=",
+      "email": "viczhang1990@yahoo.com",
+      "is_staff": 0, 
+      "is_active": 1
+    }
+  },
+   {
+    "model": "profile.userprofile",
+    "pk": 1001,
+    "fields": {
+      "address_1":"小黄村",
+      "address_2":"2号",
+      "province":"anhui",
+      "zip_code":"200071",
+      "mobile":13601894099
+    }
+  }, 
+  {
+    "model": "profile.usergroup",
+    "pk": 1,
+    "fields": {
+      "name": "enterpriseusergroup",
+      "display_name": "企业用户"
+    }
+  },
+
+  {
+    "model": "profile.usergroup",
+    "pk": 2,
+    "fields": {
+      "name": "premiumusergroup",
+      "display_name": "高级用户"
+    }
+  }
+
+]

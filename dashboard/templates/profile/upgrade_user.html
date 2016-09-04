@@ -1,0 +1,30 @@
+{% extends 'profile/index.html' %}		
+{% block profile_content %}
+<h1>升级用户</h1>
+<div class="priority medium">
+	<span>更新情况</span>
+	{% if messages %}
+		{% for message in messages|slice:":1" %}
+			<span>{{ message }} </span>
+		{% endfor %}
+	{% endif %}	
+</div>		
+
+<form class="form-horizontal" method='post' action='{% url 'dashboard:profile:user-upgrade' %}'>
+{% csrf_token %}
+{% for field in form %}
+	<div class="control-group">
+		<label class="control-label" for="date01">{{field.label_tag}}</label>
+		<div class="controls">{{field}}</div>
+		<div class="controls">{{field.errors}}</div>
+	</div>
+{% endfor %}	
+	<button type="submit" class="btn btn-primary" name="upgrade"/>升级</button>  
+</form>
+	
+<form action='{% url 'dashboard:profile:index' %}'>
+	<button type="submit" class="btn btn-warning" name="back"/>返回</button>
+</form>			
+<div class="clearfix"></div>	
+
+{% endblock %}	

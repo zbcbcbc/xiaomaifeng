@@ -1,0 +1,270 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_body %}
+{% load staticfiles %}
+<!-- start: Header -->
+<div class="navbar">
+	<div class="navbar-inner">
+		<div class="container-fluid">
+			<a class="brand" href="{% url 'home:index' %}"><span>小麥蜂</span></a>				
+			<!-- start: Header Menu -->
+			<div class="nav-no-collapse header-nav">
+				<ul class="nav pull-right">
+					<!-- start: User Dropdown -->
+					<li class="dropdown">
+						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+							<i class="halflings-icon white user"></i>{{ user.username }}
+							<span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a href="{% url 'dashboard:profile:index' %}"><i class="halflings-icon white user"></i>用户帐户</a></li>
+						<!--	<li><a href="{% url 'dashboard:profile:user-upgrade' %}"><i class="halflings-icon white star"></i>升级用户</a></li> -->
+							<li><a href="{% url 'accounts:auth_password_change' %}"><i class="halflings-icon white wrench"></i>修改密码</a></li>
+							<li><a href="{% url 'accounts:auth_logout'%}"><i class="halflings-icon white off"></i>用户登出</a></li>
+						</ul>
+					</li>
+						<!-- end: User Dropdown -->
+				</ul>
+			</div>
+			<!-- end: Header Menu -->	
+		</div>
+	</div>
+</div>
+	
+<div class="container-fluid">
+	<div class="row-fluid">		
+		<!-- start: Main Menu -->
+		<div id="sidebar-left" class="span1">
+			<div class="nav-collapse sidebar-nav">
+				<ul class="nav nav-tabs nav-stacked main-menu">
+					<li><a href="/dashboard/"><i class="fa-icon-bar-chart"></i><span class="hidden-tablet">数据</span></a></li>	
+					<li><a href="{% url 'dashboard:listing:itemlist' %}"><i class="fa-icon-hdd"></i><span class="hidden-tablet">物品</span></a></li>	
+					<li><a href="{% url 'dashboard:listing:fundlist' %}"><i class="fa-icon-money"></i><span class="hidden-tablet">筹资/捐款</span></a></li>	
+					<li><a href="{% url 'dashboard:listing:eventlist' %}"><i class="fa-icon-group"></i><span class="hidden-tablet">活动</span></a></li>	
+					<li>
+						<a class="dropmenu" href="#"><i class=" fa-icon-qrcode"></i><span class="hidden-tablet">电子票</span></a>
+						<ul>
+							<li><a class="submenu" href="{% url 'dashboard:passbook:ticketlist' %}"><i class="fa-icon-tags"></i><span class="hidden-tablet">活动门票</span></a></li>
+							<li><a class="submenu" href="{% url 'dashboard:passbook:digitalfilelist' %}"><i class="fa-icon-download-alt"></i><span class="hidden-tablet">虚拟物品</span></a></li>
+						</ul>	
+					</li>
+					<li>
+						<a class="dropmenu" href="#"><i class="fa-icon-shopping-cart"></i><span class="hidden-tablet">交易记录</span></a>
+						<ul>
+							<li><a class="submenu" href="{% url 'dashboard:orders:buylist' %}"><i class="fa-icon-file-alt"></i><span class="hidden-tablet">买入</span></a></li>
+							<li><a class="submenu" href="{% url 'dashboard:orders:selllist' %}"><i class="fa-icon-file-alt"></i><span class="hidden-tablet">卖出</span></a></li>
+						</ul>	
+					</li>
+					<li><a href="{% url 'dashboard:profile:index' %}"><i class="fa-icon-eye-open"></i><span class="hidden-tablet">你的帐户</span></a></li>	
+				</ul>
+			</div>
+		</div>
+		<!-- end: Main Menu -->
+
+		<!-- start: Content -->
+		<div id="content" class="span11">
+		{% block content %}
+			<div class="row-fluid">
+				<div class="stats-date span3">
+					<div>每月数据统计</div>
+					<div class="range">{{current_year}}年{{current_month}}月</div>
+				</div>
+
+				<div class="stats span9">
+					<div class="stat">
+						<div class="left">
+							<div class="number green">{{ payment_stat.total_pay|default:0 }}</div>
+							<div class="title"><span class="color green"></span>总支出</div>
+						</div>
+					</div>
+					
+					<div class="stat">
+						<div class="left">
+							<div class="number yellow">{{ payment_stat.total_receive|default:0 }}</div>
+							<div class="title"><span class="color yellow"></span>总收入</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
+			{% load jsonify %}
+			<div class="row-fluid">
+				<div id="stats-chart2"  class="span12" style="height:300px" >
+							<script LANGUAGE="javascript">
+								var pay_stat = {{ payment_stat.trade.pay|jsonify|safe }}
+								var receive_stat = {{ payment_stat.trade.receive|jsonify|safe }}
+								statchart(receive_stat, pay_stat)
+							</script>					
+				</div>
+			</div>
+			
+			<hr>
+			
+			<div class="row-fluid">
+				<div class="widget span5" onTablet="span12" onDesktop="span5">
+					<h2><span class="glyphicons globe"><i></i></span>买家地理位置分布</h2>
+					<hr>
+					<div class="content">
+						<div class="verticalChart">
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.beijing|default:0}}%</span></div>
+								</div>
+								<div class="title">北京</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.shanghai|default:0}}%</span></div>
+								</div>
+								<div class="title">上海</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.guangdong|default:0}}%</span></div>
+								</div>
+								<div class="title">广东</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.shenzhen|default:0}}%</span></div>
+								</div>
+								<div class="title">深圳</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.chengdu|default:0}}%</span></div>
+								</div>
+								<div class="title">成都</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.wuhan|default:0}}%</span></div>
+								</div>
+								<div class="title">武汉</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.tianjin|default:0}}%</span></div>
+								</div>
+								<div class="title">天津</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.shenyang|default:0}}%</span></div>
+								</div>
+								<div class="title">沈阳</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.wulumuqi|default:0}}%</span></div>
+								</div>
+								<div class="title">乌鲁木齐</div>
+							</div>
+							<div class="singleBar">
+								<div class="bar">
+									<div class="value"><span>{{payment_stat.location.anhui|default:0}}%</span></div>
+								</div>
+								<div class="title">安徽</div>
+							</div>	
+						</div>
+					</div>
+				</div><!--/span-->
+				
+				<div class="widget span3 noMargin" onTablet="span6" onDesktop="span3">
+					<h2><span class="glyphicons pie_chart"><i></i></span>交易平台比例</h2>
+					<hr>
+					<div class="content">
+						<!--
+						<div class="browserStat big">
+							<img src="{% static "img/platform-renren-big.png" %}" alt="Renren">
+							<span>{{payment_stat.platform.renren|default:0}}%</span>
+						</div>
+						<div class="browserStat big">
+							<img src="{% static "img/platform-weibo-big.png" %}" alt="Weibo">
+							<span>{{payment_stat.platform.weibo|default:0}}%</span>
+						</div>
+						<div class="browserStat">
+						</div>
+						<div class="browserStat">
+							<img src="{% static "img/platform-douban.png" %}" alt="Douban">
+							<span>{{payment_stat.platform.douban|default:0}}%</span>
+						</div>-->
+						
+						<div id="platformchart" style="height:300px" >
+
+							<script LANGUAGE="javascript">
+								var stat = {{payment_stat.trade.platform|jsonify|safe}}
+								platformchart(stat)
+							</script>
+						</div>
+					</div>
+				</div>
+				
+				<div class="widget span4" onTablet="span6" onDesktop="span4">
+					<h2><span class="glyphicons charts"><i></i></span>帐户数据</h2>
+					<hr>
+					<div class="content">
+						<div class="sparkLineStats">
+							<ul class="unstyled">
+								<li>帐户安全程度<span class="number">安全</span></li>
+								<li>帐户健康程度<span class="number">{{health_level}}</span></li>
+								<li>帐户优先级<span class="number">高</span></li>
+							</ul>
+						</div><!-- End .sparkStats -->
+					</div>
+				</div><!--/span-->
+			</div>
+			<hr>
+			
+			<div class="row-fluid">
+				<div class="widget span6" onTablet="span6" onDesktop="span6">
+					<h2><span class=""><i></i></span>微博成交量</h2>
+					<hr>
+					<div class="content">
+						<div id="weiboChart" style="height:300px" >
+							<script LANGUAGE="javascript">
+								var stat = {{ payment_stat.trade.weibo|jsonify|safe }}
+								weibochart(stat)
+							</script>
+						</div>
+					</div>
+				</div><!--/span-->
+				
+				<div class="widget span6" onTablet="span6" onDesktop="span6">
+					<h2><span class=""><i></i></span>人人成交量</h2>
+					<hr>
+					<div class="content">
+						<div id="renrenChart" style="height:300px" >
+							<script LANGUAGE="javascript">
+								var stat = {{ payment_stat.trade.renren|jsonify|safe}}
+								renrenchart(stat)
+							</script>
+						</div>
+					</div>
+				</div><!--/span-->
+
+				<div class="widget span6" onTablet="span6" onDesktop="span6">
+					<h2><span class=""><i></i></span>豆瓣成交量</h2>
+					<hr>
+					<div class="content">
+						<div id="doubanChart" style="height:300px" >
+							<script LANGUAGE="javascript">
+								var stat = {{ payment_stat.trade.douban|jsonify|safe }}
+								doubanchart(stat)
+							</script>
+						</div>
+					</div>
+				</div><!--/span-->
+
+			</div>
+		{% endblock %}
+		</div>
+		
+		<!-- end: Content -->
+	</div><!--/fluid-row-->
+	<footer>
+		<p>
+			<span style="text-align:left;float:left">&copy; <a href="" target="_blank">copyright</a> 2013</span>
+			<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="#"></a></span>
+		</p>
+	</footer>
+</div><!--/.fluid-container-->
+{% endblock %}

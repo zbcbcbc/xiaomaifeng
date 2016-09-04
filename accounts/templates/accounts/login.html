@@ -1,0 +1,48 @@
+{% extends 'dashboard/base.html' %}
+{% block dashboard_body %}
+
+
+<div class="container-fluid">
+	<div class="row-fluid">		
+		<div class="row-fluid">
+			<div class="login-box">
+				<div class="icons">
+					<a href="{% url 'home:index' %}"><i class="halflings-icon home"></i></a>
+					<a href="#"><i class="halflings-icon cog"></i></a>
+				</div>
+				<h2>用户登陆</h2>
+				<form class="form-horizontal" action="{% url 'accounts:auth_login' %}" method="post">{% csrf_token %}
+					<fieldset>
+						{{ form.non_field_errors }}
+						<div class="input-prepend" title="Username">
+							<span class="add-on"><i class="halflings-icon user"></i></span>
+							{{ form.username }}
+						</div>
+						<div class="controls">{{form.username.errors}}</div>
+						<div class="clearfix"></div>
+
+						<div class="input-prepend" title="Password">
+							<span class="add-on"><i class="halflings-icon lock"></i></span>
+							{{ form.password }}
+						</div>
+						<div class="controls">{{form.password.errors}}</div>
+						<div class="clearfix"></div>
+
+						<div class="button-login">	
+							<button type="submit" class="btn btn-primary">登陆</button>
+						</div>
+						<div class="clearfix"></div>
+				</form>
+				<hr>
+				<p>
+					<a href="{% url 'accounts:auth_password_reset' %}"><span>忘记密码</span></a>
+					<a href="{% url 'accounts:registration_register' %}"><span>立即注册</span></a>
+				</p>	
+			</div><!--/span-->
+		</div><!--/row-->
+	</div><!--/fluid-row-->			
+</div><!--/.fluid-container-->
+
+
+{% endblock %}
+

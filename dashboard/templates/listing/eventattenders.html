@@ -1,0 +1,33 @@
+{% extends "dashboard/index.html" %}
+<!-- start: Content -->
+{% block content %}
+{% block itemList_content %}
+<div><!--row-->		
+	<div class="box span12">
+		<div class="box-header" data-original-title>
+			<h2><i class="halflings-icon plus"></i><span class="break"></span><a href="{% url 'dashboard:listing:addfund-donation' %}">活动参加者</a>
+			<a href="{% url 'dashboard:listing:addfund-payback' %}">活动参加者</a>
+				{% if messages %}
+					{% for message in messages|slice:":3" %}
+						{% if 'warning' in message.tags %}
+							<span class="label label-warning">{{message}}</span>
+						{% elif 'success' in message.tags %}
+							<span class="label label-success">{{message}}</span>
+						{% endif %}									
+					{% endfor %}
+				{% endif %}	
+			</h2>
+		</div>
+
+		<div class="box-content">
+			{% for attender in attenders %}
+				姓名：{{attender.lastname}}{{attender.firstname}}， Id:{{attender.pk}}   
+			{% endfor %} 	  
+		</div>
+	</div><!--/span-->		
+</div><!--/row-->
+{% endblock %} 
+<!-- end: Content -->
+{% endblock %}
+			
+

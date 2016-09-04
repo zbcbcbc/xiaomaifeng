@@ -1,0 +1,24 @@
+{% load i18n %}
+	您刚才下了一笔直接支付交易订单
+
+	支付详细：
+	支付名称: {{merchandise.name}}
+	支付介绍: {{merchandise.description}}
+	支付价格: {{merchandise.price}}
+	支付参数：
+	{% for metadata in metadatas %}
+	{{metadata.name}}: {{metadata.value}}
+	{% endfor %}
+	点击这里查看支付详细: {{merchandise.show_url}} (在小麥蜂官网确认物品以防止恶意邮件)
+
+	订单详细：
+	订单标题: {{order.title}}
+	您的留言: {{order.comment}}
+	购买数量: {{order.quantity}}
+	服务费: {{order.service_charge}}
+	总价格: {{order.total_fee}}
+
+	点击这里确认购买并且支付: {{order.get_absolute_verify_url}} (若在2小时内不确认，则默认取消订单)
+	点击这里取消购买订单:{{order.get_absolute_buyer_cancel_url}} (注意：已经确认的订单无法被取消)
+
+	谢谢您的使用

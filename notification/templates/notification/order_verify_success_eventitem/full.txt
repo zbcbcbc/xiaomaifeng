@@ -1,0 +1,21 @@
+{% load i18n %}
+	{% if role == 'buyer' %}
+		您确认了活动门票交易
+		点击这里查看交易状态: {{order_detail_url}}
+	{% else %}
+		恭喜！您的活动门票被卖出
+	{% endif %}
+
+	交易标题: {{order.title}}
+	用户留言: {{order.comment}}
+	物品价格: {{order.price}}
+	总价格: {{order.total_fee}}
+	收货人姓名: {{order.receive_name}}
+	收货人地址: {{order.receive_address}}
+	收货人邮编: {{order.receive_zip}}
+	收货人手机: {{order.receive_mobile}}
+	{% if role == 'buyer' %}
+		门票连接：{{ticket_pass.get_file_output_absolute_url}}
+	{% endif %}
+
+	谢谢您的使用小麥蜂

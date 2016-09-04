@@ -1,0 +1,8 @@
+{% extends "passbook/digitalfilelist.html" %} 
+{% block digitalfilepasslist_content %}		
+<p>虚拟物品标题： {{digitalfilepass.title}}</p>
+<p>虚拟物品下载： <a href="{% url 'dashboard:passbook:digitalfile-download' access_key=digitalfilepass.access_key %}">点击下载</a></p>
+<img class="grayscale" src="/{{digitalfilepass.qr_image}}" alt="Sample Image 1"></a>		
+{% endblock %}
+			
+

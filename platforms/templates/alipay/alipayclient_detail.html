@@ -1,0 +1,24 @@
+{% extends 'profile/index.html' %}
+
+{% block profile_content %}
+	
+	<h1>支付宝帐户</h1>
+
+	<div class="priority medium">
+		<span>更新情况</span>
+		{% if messages %}
+			{% for message in messages|slice:":1" %}
+				<span>{{ message }} </span>
+			{% endfor %}
+		{% endif %}	
+	</div>
+
+					
+	<h1>帐户名称: {{ object.id }}</h1>
+	<p>帐户添加日期: {{ object.add_date }}</p>
+    			
+	<div class="clearfix"></div>	
+	
+{% endblock %}	
+
+

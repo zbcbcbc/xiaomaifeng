@@ -1,0 +1,436 @@
+{% extends 'home/base.html' %}
+{% block home_body %}
+{% load staticfiles %}
+
+<div class="slide" id="slide1" data-slide="1" data-stellar-background-ratio="0.5">
+	<div class="effect_2 padding_slide1">
+		<div class="container clearfix">
+			<div id="content" class="grid_12">
+				<div class="filtr_bg">
+					<h1>小麥蜂</h1>
+					<h2 class="fleft"><a href="{% url "dashboard:index" %}">立即使用</a></h2>
+					<embed src="http://player.youku.com/player.php/sid/XNDI4ODI0NDYw/v.swf" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash" class="fright"></embed>
+					<div class="clear"></div>
+				</div>
+				<a class="button" title="" data-slide="8"></a>
+			</div>
+			<div class="clear"></div>
+		</div>
+	</div>
+</div>
+
+<div class="slide" id="slide3" data-slide="3" data-stellar-background-ratio="0.5">
+	<div class="container clearfix">
+		
+		<img class="icon_img" src="{% static 'images/icon2.jpg' %}" />
+		<h4>国内唯一的实时社交交易平台</h4>
+		<div id="content" class="grid_12">
+			<p>小卖蜂能让您直接在社交网络上买/卖各种物品，实现直接付款，公益筹资，只需要通过简单的一句回复</p>
+		</div>
+		<div class="clear"></div>
+		
+		<img class="icon_img" src="{% static 'images/icon3.jpg' %}" />
+		<h4>了解了解！</h4>
+		<div class="clear"></div>
+		<div class="grid_4 team_block">
+			<a href="javascript:void(0);"><img src="{% static 'images/team1.jpg' %}"></a>
+			<h4>支持的社交平台，会更多！</h4>
+			<p>lorem ipsum dolor sit amet</p>
+			<ul class="team_soc">
+				<li><a href="javascript:void(0);" class="soc1"></a></li>
+				<li><a href="javascript:void(0);" class="soc2"></a></li>
+				<li><a href="javascript:void(0);" class="soc3"></a></li>
+				<li><a href="javascript:void(0);" class="soc4"></a></li>
+			</ul>
+		</div>
+		<div class="grid_4 team_block">
+			<a href="javascript:void(0);"><img src="{% static 'images/team2.jpg' %}"></a>
+			<h4>多种付款方式，保证您的帐户安全</h4>
+			<p>lorem ipsum dolor sit amet</p>
+			<ul class="team_soc">
+				<li><a href="javascript:void(0);" class="soc1"></a></li>
+				<li><a href="javascript:void(0);" class="soc2"></a></li>
+				<li><a href="javascript:void(0);" class="soc3"></a></li>
+				<li><a href="javascript:void(0);" class="soc4"></a></li>
+			</ul>
+		</div>
+		<div class="grid_4 team_block omega">
+			<a href="javascript:void(0);"><img src="{% static 'images/team3.jpg' %}"></a>
+			<h4>专业定制的用户界面助您收获更多</h4>
+			<p>lorem ipsum dolor sit amet</p>
+			<ul class="team_soc">
+				<li><a href="javascript:void(0);" class="soc1"></a></li>
+				<li><a href="javascript:void(0);" class="soc2"></a></li>
+				<li><a href="javascript:void(0);" class="soc3"></a></li>
+				<li><a href="javascript:void(0);" class="soc4"></a></li>
+			</ul>
+		</div>
+		<div class="clear"></div>
+		
+	</div>
+</div>
+
+
+
+
+<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+	<div class="effect_2 padding_slide4">
+		<div class="container clearfix">
+			
+			<div id="content" class="grid_12">
+				<h1>与小卖蜂合作的品牌</h1>
+				<h2></h2>			
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+<div class="slide" id="slide5" data-slide="5" data-stellar-background-ratio="0.5">
+	<div class="container clearfix">
+
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/1.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>出售物品</span>
+					<p class="hot_town"></p>
+					<p class="hot_date">10 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/2.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>买入物品</span>
+					<p class="hot_town">Greece</p>
+					<p class="hot_date">6 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/3.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>公益筹资</span>
+					<p class="hot_town">Vietnam</p>
+					<p class="hot_date">4 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 omega tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="images/tours/4.jpg" alt="" />
+				</div>
+				<div class="recent_text">
+					<span></span>
+					<p class="hot_town">Rome</p>
+					<p class="hot_date">12 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/5.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>直接支付</span>
+					<p class="hot_town">Washington</p>
+					<p class="hot_date">4 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/6.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>运用打折券</span>
+					<p class="hot_town">France</p>
+					<p class="hot_date">5 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/7.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>取消交易</span>
+					<p class="hot_town">Dolor</p>
+					<p class="hot_date">10 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+		<div class="grid_3 omega tours_content">
+			<a class="tours_block" href="javascript:void(0);" alt="">
+				<div class="hover_img">
+					<img src="{% static 'images/tours/8.jpg' %}" alt="" />
+				</div>
+				<div class="recent_text">
+					<span>移动平台</span>
+					<p class="hot_town">Greece</p>
+					<p class="hot_date">6 days</p>
+					<div class="clear"></div>
+				</div>
+			</a>
+		</div>
+	
+	</div>
+</div>
+
+<div class="slide" id="slide4" data-slide="4" data-stellar-background-ratio="0.5">
+	<div class="effect_2 padding_slide4">
+		<div class="container clearfix">
+			
+			<div id="content" class="grid_12">
+				<h1>谁在使用小卖蜂？</h1>
+				<h2>Cras urna leo, fringilla nec aliquam ac, varius in enim. Maecenas non felis</h2>			
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+<div class="slide" id="slide6" data-slide="6" data-stellar-background-ratio="0.5">
+	<div class="padding_slide5">
+		<div class="bord_top"></div>
+		<div class="effect_2"></div>
+		<div class="container clearfix">
+		
+			<div id="content" class="grid_12">
+				
+			</div>
+			
+		</div>
+		
+		<div class="flexslider">
+			<ul class="slides">
+				<li><img src="{% static 'images/slider/1.jpg' %}" alt=""/></li>
+				<li><img src="{% static 'images/slider/2.jpg' %}"  alt=""/></li>
+				<li><img src="{% static 'images/slider/3.jpg' %}" alt=""/></li>
+				<li><img src="{% static 'images/slider/4.jpg' %}" alt=""/></li>
+				<li><img src="{% static 'images/slider/5.jpg' %}"  alt=""/></li>
+				<li><img src="{% static 'images/slider/6.jpg' %}" alt=""/></li>
+				<li><img src="{% static 'images/slider/7.jpg' %}" alt=""/></li>
+				<li><img src="{% static 'images/slider/8.jpg' %}"  alt=""/></li>
+				<li><img src="{% static 'images/slider/9.jpg' %}" alt=""/></li>
+			</ul>
+		</div>
+		
+	</div>
+</div>
+
+<div class="slide" id="slide8" data-slide="8" data-stellar-background-ratio="0.5">
+	<div class="padding_slide8">
+		<div class="container clearfix">
+			
+			<div id="content" class="form_bg">
+				<div id="content">
+					<img class="icon_img" src="{% static 'images/icon1.jpg' %}" />
+					<a class="hol_offers" href="javascript:void(0);">查看详细收费准则</a>
+					<h4>收费标准 -- 买物品，公益筹资，发送帐单永远免费</h4>
+					<div class="clear"></div>
+				</div>
+				
+				<div class="travel_form">
+					<div class="grid_6 radio_block">
+						<p><input type="radio" name="5" value="1" class="styled" /> 普通用户</p>
+						<p><input type="radio" name="5" value="2" class="styled" /> 高级用户</p>
+						<p><input type="radio" name="5" value="3" class="styled" /> 企业用户</p>
+						<p name="5" value="4" class="styled">单比交易的5%</p>
+						<p name="5" value="5" class="styled">单比交易的3%</p>
+						<p name="5" value="6" class="styled">单比交易的2%</p>
+						<p name="5" value="7" class="styled">＋ 0.3 元 / 每笔交易</p>
+						<p name="5" value="8" class="styled">＋ 30元 / 每月</p>
+						<p name="5" value="9" class="styled">＋ 50元 / 每月</p>
+					</div>
+					<div class="grid_6 omega order_block">
+						<form method="post" action="">
+							<input type="submit" class="form_btn" value="开始使用！" />
+						</form>
+					</div>
+					<div class="clear"></div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="slide" id="slide10" data-slide="10" data-stellar-background-ratio="0.5">
+	<div class="container clearfix">
+		
+		<div id="content" class="grid_12">
+			<h1><span>联系方式</span></h1>
+			<h2>下面的联系方式都可以联系到小卖蜂工作人员，我们努力服务并积极采纳顾客的反馈</h2>
+		</div>
+		<div class="clear"></div>
+		
+		<div class="grid_4">
+			<img class="icon_img" src="{% static 'images/icon5.jpg' %}" />
+			<h4>联系我们</h4>
+			<div class="clear"></div>
+			<div class="contact_form">  
+				<div id="note"></div>
+				<div id="fields">
+					<form id="ajax-contact-form" action="">
+						<input type="text" name="name" value="" placeholder="称呼" />
+						<!-- <input type="text" name="subject" value="" placeholder="Phone" /> -->
+						<input type="text" name="email" value="" placeholder="邮件地址" />
+						<textarea name="message" id="message" placeholder="内容"></textarea>
+						<div class="clear"></div>
+						<input type="reset" class="contact_btn" value="取消" />
+						<input type="submit" class="contact_btn send_btn" value="发送" />
+						<div class="clear"></div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="grid_4 contact_det_block">
+			<img class="icon_img" src="{% static 'images/icon4.jpg' %}" />
+			<h4>联系详情</h4>
+			<div class="clear"></div>
+			<ul class="foot_block_intouch">
+				<li class="touch_phone"><p>(+86) 13601894088</p></li>
+				<li class="touch_clock"><p>周一 到 周六 上午9:00 - 下午6:00 </p></li>
+				<li class="touch_mail"><a href="mailto:support@weijiaoyi.com">support@weijiaoyi.com</a></li>
+				<li class="touch_site"><a href="javascript:void(0);">www.weijiaoyi.com</a></li>
+				<li class="touch_adress"><p>中国上海市延长中路629弄</p></li>
+				<li class="facebook"><a href="javascript:void(0);">http://facebook.com/companyname</a></li>
+				<li class="twitter"><a href="javascript:void(0);">http://twitter.com/companyname</a></li>
+			</ul>
+		</div>
+		<div class="grid_4 contact_det_block omega">
+			<img class="icon_img" src="{% static 'images/icon6.jpg' %}" />
+			<h4>简介</h4>
+			<div class="clear"></div>
+			<p>小卖蜂提供在社交网络实现实时交易的平台</p>
+			<p>通过在小卖蜂上注册您的用户，和您的支付宝帐号连接以后，您可以在包括人人，微博等社交平台上发布您想卖的物品，
+				买家通过简单的回复即可达成交易，小卖蜂帮您完成后台繁琐的交易过程，让您在轻松的浏览，回复的同时，物品来到您的家门。</p>
+		</div>
+		<div class="clear"></div>
+
+	</div>
+
+
+	<div style="width:100%;height:722px;border:#ccc solid 1px;" id="dituContent"></div>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMarker();//向地图中添加marker
+    }
+    
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(121.45495,31.274772);//定义一个中心点坐标
+        map.centerAndZoom(point,17);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+    
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.disableScrollWheelZoom();//禁用地图滚轮放大缩小，默认禁用(可不写)
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.disableKeyboard();//禁用键盘上下左右键移动地图，默认禁用(可不写)
+    }
+    
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_SMALL});
+	map.addControl(ctrl_nav);
+                //向地图中添加比例尺控件
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
+    
+    //标注点数组
+    var markerArr = [{title:"公司地址",content:"小卖蜂临时地址",point:"121.455345|31.27576",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+		 ];
+    //创建marker
+    function addMarker(){
+        for(var i=0;i<markerArr.length;i++){
+            var json = markerArr[i];
+            var p0 = json.point.split("|")[0];
+            var p1 = json.point.split("|")[1];
+            var point = new BMap.Point(p0,p1);
+			var iconImg = createIcon(json.icon);
+            var marker = new BMap.Marker(point,{icon:iconImg});
+			var iw = createInfoWindow(i);
+			var label = new BMap.Label(json.title,{"offset":new BMap.Size(json.icon.lb-json.icon.x+10,-20)});
+			marker.setLabel(label);
+            map.addOverlay(marker);
+            label.setStyle({
+                        borderColor:"#808080",
+                        color:"#333",
+                        cursor:"pointer"
+            });
+			
+			(function(){
+				var index = i;
+				var _iw = createInfoWindow(i);
+				var _marker = marker;
+				_marker.addEventListener("click",function(){
+				    this.openInfoWindow(_iw);
+			    });
+			    _iw.addEventListener("open",function(){
+				    _marker.getLabel().hide();
+			    })
+			    _iw.addEventListener("close",function(){
+				    _marker.getLabel().show();
+			    })
+				label.addEventListener("click",function(){
+				    _marker.openInfoWindow(_iw);
+			    })
+				if(!!json.isOpen){
+					label.hide();
+					_marker.openInfoWindow(_iw);
+				}
+			})()
+        }
+    }
+    //创建InfoWindow
+    function createInfoWindow(i){
+        var json = markerArr[i];
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        return iw;
+    }
+    //创建一个Icon
+    function createIcon(json){
+        var icon = new BMap.Icon("http://app.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        return icon;
+    }
+    
+    initMap();//创建和初始化地图
+</script>
+	
+</div>
+
+{% endblock %}

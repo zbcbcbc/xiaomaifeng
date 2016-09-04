@@ -1,0 +1,21 @@
+{% load i18n %}
+	{% if role == 'buyer' %}
+		卖家已经寄出了您购买的物品
+		点击这里查看交易状态: {{order_detail_url}}
+	{% else %}
+		您确认了物品寄出,等待买家确认查收物品
+	{% endif %}
+
+	交易标题: {{order.title}}
+	用户留言: {{order.comment}}
+	物品价格: {{order.price}}
+	总价格: {{order.total_fee}}
+	收货人姓名: {{payment.receive_name}}
+	收货人地址: {{payment.receive_address}}
+	收货人邮编: {{payment.receive_zip}}
+	收货人手机: {{payment.receive_mobile}}
+	{% if role == 'buyer' %}
+		点击这里确认查收物品
+	{% endif %}
+
+	谢谢您的使用小麥蜂

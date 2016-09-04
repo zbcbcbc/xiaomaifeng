@@ -1,0 +1,9 @@
+{% extends "passbook/ticketlist.html" %} 
+{% block ticketpasslist_content %}		
+<p>门票标题： {{ticketpass.title}}</p>
+<p>活动开始： {{ticketpass.event_start}}</p>
+<p>门票下载： <a href="{% url 'dashboard:passbook:ticket-download' access_key=ticketpass.access_key %}">点击下载</a></p>
+<img class="grayscale" src="/{{ticketpass.qr_image}}" alt="Sample Image 1"></a>		
+{% endblock %}
+			
+

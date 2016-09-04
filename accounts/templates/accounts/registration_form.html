@@ -1,0 +1,14 @@
+{% extends "accounts/registration_base.html" %}
+{% block title %}Register for an account{% endblock %}
+{% block content %}
+<div class="register">
+<h1>用户注册</h1>
+<table>
+    <form method='post' action=''>{% csrf_token %}
+        {{ form }}
+        <tr><td></td><td><input type="submit" value="注册" /></td>
+    </form>
+</table>
+<p>通过注册帐户您确认同意我们的<a href="{% url 'home:term' %}">使用守则</a></p>
+</div>
+{% endblock %}

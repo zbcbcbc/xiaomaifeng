@@ -1,0 +1,14 @@
+"""
+DEPENDENCIES
+"""
+
+Memcached
+Redis
+Celery
+
+python-magic
+python-redis
+python-mysql
+python-djcelery
+
+

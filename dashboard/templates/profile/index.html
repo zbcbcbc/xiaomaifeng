@@ -1,0 +1,168 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}	
+<!-- start: Content -->
+<div>
+	<div class="span12">
+	{% block profile_content %}
+		<h1>帐户</h1>
+			<div class="priority high">
+				<span>社交帐户</span>
+				{% if messages %}
+					{% for message in messages|slice:":1" %}
+						{% if 'user-social-accounts' in message.tags %}
+							<span>{{ message }}</span>
+						{% endif %}
+					{% endfor %}
+				{% endif %}	
+			</div>
+			{% if renren_client %}
+			<div class="task high">
+				<div class="desc">
+					<div class="title"><a href="{{renren_client.get_absolute_url}}">{{ renren_client.user_name }}</a></div>
+					<div>人人网</div>
+				</div>
+				<div class="time">
+					<div class="date">{{ renren_client.add_date|date:"SHORT_DATE_FORMAT" }}</div>
+					<div>连接日期</div>
+				</div>
+			</div>
+			{% endif %}
+
+			{% if weibo_client %}
+			<div class="task high">
+				<div class="desc">
+					<div class="title"><a href="{{weibo_client.get_absolute_url}}">{{ weibo_client.user_name }}</a></div>
+					<div>新浪微博</div>
+				</div>
+				<div class="time">
+					<div class="date">{{ weibo_client.add_date|date:"SHORT_DATE_FORMAT" }}</div>
+					<div>连接日期</div>
+				</div>
+			</div>
+			{% endif %}	
+
+			{% if douban_client %}
+			<div class="task high">
+				<div class="desc">
+					<div class="title"><a href="{{douban_client.get_absolute_url}}">{{ douban_client.user_name }}</a></div>
+					<div>豆瓣</div>
+				</div>
+				<div class="time">
+					<div class="date">{{ douban_client.add_date|date:"SHORT_DATE_FORMAT" }}</div>
+					<div>连接日期</div>
+				</div>
+			</div>
+			{% endif %}
+
+			{% if not renren_client %}
+			<div class='task high'>
+				<a href='{% url 'platforms:renren:oauth2'%}'><span>连接人人帐号</span></a>
+			</div>
+			{% endif %}
+
+			{% if not weibo_client %}
+			<div class='task high'>
+				<a href='{% url 'platforms:weibo:oauth2'%}'><span>连接新浪微博帐号</span></a>
+			</div>
+			{% endif %}
+
+			{% if not douban_client %}
+			<div class='task high'>
+				<a href='{% url 'platforms:douban:oauth2'%}'><span>连接豆瓣帐号</span></a>
+			</div>
+			{% endif %}
+
+			<div class="clearfix"></div>
+					
+			<div class="priority medium">
+				<span>帐户资料</span>
+				{% if messages %}
+					{% for message in messages|slice:":1" %}
+						{% if 'user-profile' in message.tags %}
+							<span>{{ message }}</span>
+						{% endif %}
+					{% endfor %}
+				{% endif %}	
+			</div>
+
+			<div class="task medium">
+				<div class="desc">
+					<div class="title">个人资料</div>
+					<p>姓名: {{user.userprofile.fullname}}</p>	
+					<p>邮箱: {{user.email}}</p>	
+					<p>地址: {{user.userprofile.fulladdress}}</p>
+					<p>省市: {{user.userprofile.get_province_display}}</p>
+					<p>国家: {{user.userprofile.get_country_display}}</p>
+					<!--<p>类型: {{user.membership.group.display_name}}</p>-->
+				</div>
+				<div class="time">
+					<div class="date">Jun 1, 2012</div>
+					<div> 1 day</div>
+				</div>
+			</div>
+
+			<div class='task medium'>
+				<a href='{{user.userprofile.get_absolute_url}}'><span>更新帐户</span></a>
+			</div>
+			<!--
+			<div class='task medium'>
+				<a href='{% url 'dashboard:profile:user-upgrade' %}'><span>升级帐户</span></a>
+			</div>
+			<div class='task medium'>
+				<a href='{% url 'dashboard:profile:user-downgrade' %}'><span>降级帐户(测试用)</span></a>
+			</div>-->
+
+			<div class="clearfix"></div>	
+					
+			<div class="priority low">
+				<span>银行帐户</span>
+				{% if messages %}
+					{% for message in messages|slice:":1" %}
+						{% if 'user-banking' in message.tags %}
+							<span>{{ message }}</span>
+						{% endif %}
+					{% endfor %}
+				{% endif %}	
+			</div>
+					
+			{% if alipay_client %}
+			<div class="task low">
+				<div class="desc">
+					<div class="title"><a href="{{alipay_client.get_absolute_url}}">
+						{{alipay_client.id}}</a>
+					</div>
+					<div>{{alipay_client.uid}}</div>
+				</div>
+				<div class="time">
+					<div class="date">{{alipay_client.add_date|date:"SHORT_DATE_FORMAT"}}</div>
+					<div> 1 day</div>
+				</div>
+			</div>
+			{% else %}
+			<div class='task low'>
+				<a href='{% url 'platforms:alipay:oauth2' %}'><span>添加支付宝帐户</span></a>
+			</div>
+			{% endif %}
+
+			<div class="clearfix"></div>		
+					
+	{% endblock %}
+	</div>
+	<!--		
+	<div class="span5 noMarginLeft">
+		<div class="message dark">
+			<div class="header">
+				<h1>"广告区"</h1>
+			</div>
+			<div class="content">
+				<p>这里是第一广告区</p>
+			</div>
+			<div class="attachments">
+				<p>这里是第二广告区</p>
+			</div>	
+		</div>		
+	</div>-->
+</div>
+<!-- end: Content -->
+{% endblock %}
+			

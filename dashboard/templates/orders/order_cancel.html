@@ -1,0 +1,10 @@
+{% extends "orders/orderlist.html" %}
+
+{% block orderlist_content %}
+
+
+	{{status}}
+
+	<a href="{% url 'dashboard:orders:buylist' %}">返回</a>
+
+{% endblock %}

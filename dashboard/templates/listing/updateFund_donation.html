@@ -1,0 +1,114 @@
+{% extends "listing/fundlist.html" %} 
+{% block fundList_content %}		
+<form method='post' action='{% url 'dashboard:listing:fund-update-donation' pk=fund.id%}' enctype="multipart/form-data">{% csrf_token %}
+	<div> <!--row-->
+		<div class="box span6">
+			<div class="box-header" data-original-title>
+				<h2><i class="halflings-icon edit"></i><span class="break"></span>编辑捐款</h2>
+			</div>
+			<div class="box-content">
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.name.label_tag}}</label>
+					<div class="controls">{{form.name}}</div>
+					<div class="controls">{{form.name.errors}}</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.description.label_tag}}</label>
+					<div class="controls">{{form.description}}</div>
+					<div class="controls">{{form.description.errors}}</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.price.label_tag}}</label>
+					<div class="input-prepend input-append">
+						<div class="controls">
+							<span class="add-on">$</span>{{form.price}}<span class="add-on">元</span>
+						</div>
+					</div>
+					<div class="controls">{{form.price.errors}}</div>
+				</div>   
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.goal.label_tag}}</label>
+					<div class="input-prepend input-append">
+						<div class="controls">
+							<span class="add-on">$</span>{{form.goal}}<span class="add-on">元</span>
+						</div>
+					</div>
+					<div class="controls">{{form.goal.errors}}</div>
+				</div>  
+  
+			</div>
+		</div><!--/span-->
+
+		<div class="box span6">
+			<div class="control-group">
+				<label class="control-label" for="date01">{{form.image.label_tag}}</label>
+				<div class="controls">{{form.image}}</div>
+				<div class="controls">{{form.image.errors}}</div>
+			</div>
+			<div class="box-header">
+				<h2><i class="halflings-icon align-justify"></i><span class="break"></span>已添加社交帐号</h2>
+			</div>
+			<div class="box-content">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>帐号昵称</th>
+							<th>添加日期</th>
+							<th>平台</th>
+							<th>评论数</th>  
+							<th>已卖出</th>
+							<th>删除</th>                                        
+						</tr>
+					</thead>   
+					<tbody>
+					{% for post in content_posts %}
+						<tr>
+							<td>{{post.user_name|escape}}</a></td>
+							<td class="center">{{ post.post_date|date:"SHORT_DATE_FORMAT" }}</td>
+							<td class="center">{{ post.platform|escape }}
+							<td class="center">{{ post.comments_count }}</td>   
+							<td class="center">0</td>   
+							<td class="center"><a class="btn btn-danger" href="#"> <!--TODO: ajax delete -->
+							<i class="halflings-icon trash halflings-icon"></i></td>                               
+						</tr>
+					{% endfor %}  
+					</tbody>
+				</table>  
+			</div>
+
+			<p></p>
+
+			<div class="box-header">
+				<h2><i class="halflings-icon plus"></i><span class="break"></span>添加到新的社交帐号</h2>
+			</div>
+
+			<div class="box-content">
+				<table class="table table-bordered table-striped">
+				{{select_client_form}}	
+				</table>
+			</div>
+
+			<br><br><br>
+
+			<div class="form-actions">
+				<button class="btn btn-large btn-success" name="update">更新</button>
+			</div>
+			<div class="form-actions">
+				<form action='{% url 'dashboard:listing:fundlist' %}'>
+					<button type="submit" class="btn btn-warning" name="back"/>返回</button>
+				</form>
+			</div>
+			<div class="form-actions">
+				<form method='post' action='{% url 'dashboard:listing:delete-fund-donation' pk=fund.id %}'>{% csrf_token %}
+					<button type="submit" class="btn btn-danger" name="back"/>删除筹资</button>
+				</form>	
+			</div>
+		</div><!--/span-->
+	</div><!--/row-->
+</form>
+{% endblock %}
+			
+

@@ -1,0 +1,14 @@
+{% load i18n %}
+	{% if role == 'buyer' %}
+		您确认了筹资交易
+		点击这里查看交易状态: {{order_detail_url}}
+	{% else %}
+		恭喜！您受到一笔筹资
+	{% endif %}
+
+	交易标题: {{order.title}}
+	用户留言: {{order.comment}}
+	物品价格: {{order.price}}
+	总价格: {{order.total_fee}}
+
+	谢谢您的使用小麥蜂

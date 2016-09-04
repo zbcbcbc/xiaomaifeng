@@ -1,0 +1,29 @@
+{% load i18n %}
+	{% if role == 'buyer' %}
+		您确认了物品交易
+		点击这里查看交易状态: {{order_detail_url}}
+	{% else %}
+		恭喜！您的物品被卖出
+	{% endif %}
+
+	交易标题: {{title}}
+	用户留言: {{comment}}
+	物品价格: {{price}}
+	总价格: {{total_fee}}
+	收货人姓名: {{receive_name}}
+	收货人地址: {{receive_address}}
+	收货人邮编: {{receive_zip}}
+	收货人手机: {{receive_mobile}}
+	{% if role == 'buyer' %}
+		{% if ticket %}
+			门票连接：http://{{site.domain}}{{ticket.get_absolute_url}}
+
+		{% elif digital_file %}
+			虚拟物品连接：{{digital_file.url}}
+0
+		{% else %}
+			请等待卖家发货，查看发货详情请点击：
+		{% endif %}
+	{% endif %}
+
+	谢谢您的使用小麥蜂

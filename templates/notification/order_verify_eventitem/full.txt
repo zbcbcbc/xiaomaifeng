@@ -1,0 +1,24 @@
+{% load i18n %}
+	您刚才下了一笔活动门票购买订单
+
+	活动详细：
+	活动ID: {{merchandise.pk}}
+	活动名称: {{merchandise.name}}
+	活动介绍: {{merchandise.description}}
+	门票价格: {{merchandise.price}}
+	活动开始时间: {{merchandise.event_start}}
+
+	点击这里查看活动详细: {{merchandise.show_url}} (在小麥蜂官网确认物品以防止恶意邮件)
+
+	订单详细：
+	订单标题: {{order.title}}
+	您的留言: {{order.comment}}
+	购买数量: {{order.quantity}}
+	服务费: {{order.service_charge}}
+	总价格: {{order.total_fee}}
+
+	点击这里确认购买并且支付: {{payment.verify_url}} (若在2小时内不确认，则默认取消订单)
+	点击这里取消购买订单:{{order.cancel_url}} (注意：已经确认的订单无法被取消)
+
+
+	谢谢您的使用

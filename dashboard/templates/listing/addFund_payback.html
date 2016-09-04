@@ -1,0 +1,122 @@
+{% extends "listing/fundlist.html" %} 
+{% block fundList_content %}
+
+<script type="text/javascript">
+    $(function() {
+        $('#id_metadata_table tbody tr').formset({
+            extraClasses: ['row1', 'row2', 'row3']
+        })
+    })
+</script>
+<!-- Here's an example of how you can style add/delete buttons with CSS -->
+<style type="text/css">
+    .add-row {
+        padding-left:18px;
+        background:url({{ MEDIA_URL }}images/add.png) no-repeat left center;
+    }
+    .delete-row {
+        float:right;
+        display:block;
+        margin:5px 0 0 5px;
+        text-indent:-6000px;
+        background:url({{ MEDIA_URL }}images/delete.png) no-repeat left center;
+        width:16px;
+        height:16px;
+    }
+    tr.row1 td { background-color: #f9f9f9; }
+    tr.row2 td { background-color: #f3f3f3; }
+    tr.row3 td { background-color: #ededed; }
+</style>
+
+<form method='post' action='{% url 'dashboard:listing:addfund-payback'%}' enctype="multipart/form-data">
+{% csrf_token %}
+	<div> <!--row-->
+		<div class="box span6">
+			<div class="box-header" data-original-title>
+				<h2><i class="halflings-icon edit"></i><span class="break"></span>添加筹资</h2>
+			</div>
+			<div class="box-content">
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.name.label_tag}}</label>
+					<div class="controls">{{form.name}}</div>
+					<div class="controls">{{form.name.errors}}</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.description.label_tag}}</label>
+					<div class="controls">{{form.description}}</div>
+					<div class="controls">{{form.description.errors}}</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.price.label_tag}}</label>
+					<div class="input-prepend input-append">
+						<div class="controls">
+							<span class="add-on">$</span>{{form.price}}<span class="add-on">元</span>
+						</div>
+					</div>
+					<div class="controls">{{form.price.errors}}</div>
+				</div>   
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.goal.label_tag}}</label>
+					<div class="input-prepend input-append">
+						<div class="controls">
+							<span class="add-on">$</span>{{form.goal}}<span class="add-on">元</span>
+						</div>
+					</div>
+					<div class="controls">{{form.goal.errors}}</div>
+				</div>  
+
+				<div class="control-group">
+					<label class="control-label" for="date01">{{form.image.label_tag}}</label>
+					<div class="controls">{{form.image}}</div>
+					<div class="controls">{{form.image.errors}}</div>
+				</div> 
+
+
+				<table id="id_metadata_table" border="0" cellpadding="0" cellspacing="5">
+                    <thead>
+                        <tr>
+                            <th scope="col">参数</th>
+                            <th scope="col">数值</th>
+                        </tr>
+                	</thead>
+                	<tbody>
+                    	{% for form in metadata_formset.forms %}
+                    		<tr id="{{ form.prefix }}-row">
+                       	 		<td>{{ form.name }}</td>
+                        		<td>{{ form.value }}</td>
+                    		</tr>
+                    		{% endfor %}
+                    		{{ metadata_formset.management_form }}
+                    </tbody>
+            	</table>
+            	
+			</div>
+		</div><!--/span-->
+
+		<div class="box span6">
+
+			<div id="image-7" class="masonry-thumb">{% load static %}
+				<img class="grayscale" src="{% static "img/gallery/photo7.jpg" %}" alt="Sample Image 7">
+			</div>
+			<div class="box-header">
+				<h2><i class="halflings-icon plus"></i><span class="break"></span>选择平台</h2>
+			</div>
+			<div class="box-content">
+				<table class="table table-bordered table-striped">
+					{{select_client_form}}
+				</table>
+			</div>	
+
+			<div class="form-actions">
+        		<button class="btn btn-large btn-success">发布</button>
+				<button type="reset" class="btn">取消</button>
+			</div>
+		</div><!--/span-->
+	</div><!--/row-->
+</form>
+{% endblock %}
+			
+

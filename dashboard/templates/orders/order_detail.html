@@ -1,0 +1,53 @@
+{% extends "orders/orderlist.html" %}
+{% block orderlist_content %}
+
+
+	<h1>交易详细</h1>
+	<p>交易标题： {{order.title}}</p>
+	<p>您的留言： {{order.comment}}</p>
+	<p>交易商品价格： {{order.price}}</p>
+	<p>交易商品数量： {{order.quantity}}</p>
+	<p>交易总价格：{{order.total_fee}}</p>
+	<p>交易状态: {{order.get_status_display}}</p>
+	<br>
+	<h2>交易商品详细</h2>
+	<p>物品名称: {{merchandise.name}}</p>
+	<p>物品介绍: {{merchandise.description}}</p>
+	<p>其他参数:</p>
+	{% for metadata in metadatas %}
+		<p>{{metadata.name}}: {{metadata.value}}</p>
+	{% endfor %}
+	<br>
+	<h2>交易物流详细</h2>
+	<p>物流价格: {{order.logistics_fee}}</p>
+	<p>物流类型: {{merchandise.get_logistics_type_display}}</p>
+	<p>物流支付方式: {{merchandise.get_logistics_payment_display}}</p>
+	<p>收货人姓名: {{payment.receive_name}}</p>
+	<p>收货人地址: {{payment.receive_address}}</p>
+	<p>收货人邮编: {{payment.receive_zip}}</p>
+	<p>收货人手机: {{payment.receive_mobile}}</p>
+
+
+	{% if role == 'buyer' %}
+		<h1>买家行为：</h1>
+		{% if not order.is_expired %}
+			{% if not order.payment_verified %}
+				<p><a href='{{order.get_verify_url}}'>买家认证交易</a></p>
+				<p><a href='{{order.get_buyer_cancel_url}}'>买家取消交易</a></p>
+			{% endif %}
+		{% else %}
+			交易已经过期
+		{% endif %}
+	{% elif role == 'seller' %}
+		<h1>卖家行为：</h1>
+		{% if order.payment_verified %}
+			{% if not order.shippment_confirmmed %}
+				<p><a href='{{order.get_shippment_confirm_url}}'>确认寄货</a></p>
+				<p><a href='{{order.get_seller_cancel_url}}'>卖家取消交易</a></p>
+			{% endif %}
+		{% endif %}
+	{% endif %}
+
+
+{% endblock %}
+

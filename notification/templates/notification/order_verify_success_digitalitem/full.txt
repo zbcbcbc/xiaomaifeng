@@ -1,0 +1,23 @@
+{% load i18n %}
+	{% if role == 'buyer' %}
+		您确认了虚拟物品交易
+		点击这里查看交易状态: {{order_detail_url}}
+	{% else %}
+		恭喜！您的虚拟物品被卖出
+	{% endif %}
+
+	交易标题: {{order.title}}
+	用户留言: {{order.comment}}
+	物品价格: {{order.price}}
+	物品数量: {{order.quantity}}
+	总价格: {{order.total_fee}}
+	收货人姓名: {{payment.receive_name}}
+	收货人地址: {{payment.receive_address}}
+	收货人邮编: {{payment.receive_zip}}
+	收货人手机: {{payment.receive_mobile}}
+
+	{% if role == 'buyer' %}
+	虚拟物品连接：{{digital_file_pass.get_file_ouput_absolute_url}}
+	{% endif %}
+
+	谢谢您的使用小麥蜂

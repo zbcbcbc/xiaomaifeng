@@ -1,0 +1,40 @@
+{% extends 'profile/index.html' %}  
+{% block profile_content %}
+<h1>更新用户({{username}})资料</h1>
+
+<div class="priority medium">
+	<span>更新情况</span>
+	{% if messages %}
+		{% for message in messages|slice:":1" %}
+			<span>{{ message }} </span>
+		{% endfor %}
+	{% endif %} 
+</div>				
+<form class="form-horizontal" method='post' action="{% url 'dashboard:profile:userprofile-detail' %}">
+{% csrf_token %}
+{% for field in form %}
+	<div class="control-group">
+		<label class="control-label" for="date01">{{field.label_tag}}</label>
+		<div class="controls">{{field}}</div>
+		<div class="controls">{{field.errors}}</div>
+	</div>
+{% endfor %}
+			
+	<button type="submit" class="btn btn-primary" name="update"/>更新</button>
+</form>
+
+<form action="{% url 'accounts:auth_password_change' %}">
+	<button type="submit" class="btn btn-warning" name="back"/>修改密码</button>
+</form>
+<form action="{% url 'dashboard:profile:index' %}">
+	<button type="submit" class="btn btn-warning" name="back"/>返回</button>
+</form>
+<form action="{% url 'accounts:cancel' %}">
+	<button type="submit" class="btn btn-danger" name="back"/>注销</button>
+</form>
+					
+<div class="clearfix"></div>    
+	
+{% endblock %}  
+
+

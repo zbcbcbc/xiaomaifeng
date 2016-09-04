@@ -1,0 +1,1 @@
+from platforms.renren.tests.models import *

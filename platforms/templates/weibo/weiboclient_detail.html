@@ -1,0 +1,24 @@
+{% extends 'profile/index.html' %}
+
+{% block profile_content %}
+	
+	<h1>微博帐户</h1>
+
+	<div class="priority medium">
+		<span>更新情况</span>
+		{% if messages %}
+			{% for message in messages|slice:":1" %}
+				<span>{{ message }} </span>
+			{% endfor %}
+		{% endif %}	
+	</div>
+
+					
+	<h1>帐户名称: {{ client.user_name }}</h1>
+	<p>帐户添加日期: {{ client.add_date }}</p>
+    			
+	<div class="clearfix"></div>	
+	<a href="{% url 'platforms:weibo:client-delete' client_id=object.id%}">删除</a>
+	
+{% endblock %}	
+
